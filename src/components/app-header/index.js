@@ -54,5 +54,3 @@ const AppHeader = memo(() => {
 });
 
 export default AppHeader;
-
-// <a href='#/' className='logo sprite_01'>CloudMusic</a>

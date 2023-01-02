@@ -24,4 +24,4 @@ export const headerLinks = [
         title: "Download",
         link: "https://music.163.com/#/download",
     },
-]
+];
