@@ -2,7 +2,7 @@
 export const headerLinks = [
     {
         title: "Discover",
-        link: "/",
+        link: "/discover",
     },
     {
         title: "My",
@@ -25,3 +25,30 @@ export const headerLinks = [
         link: "https://music.163.com/#/download",
     },
 ];
+
+export const discoverMenu = [
+    {
+        title: "Recommend",
+        link: "/discover/recommend",
+    },
+    {
+      title: "Ranking",
+      link: "/discover/ranking"
+    },
+    {
+      title: "Songs",
+      link: "/discover/songs"
+    },
+    {
+      title: "DJ-radio",
+      link: "/discover/djradio"
+    },
+    {
+      title: "Artist",
+      link: "/discover/artist"
+    },
+    {
+      title: "Album",
+      link: "/discover/album"
+    },
+]

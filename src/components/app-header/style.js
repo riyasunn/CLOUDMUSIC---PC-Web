@@ -17,7 +17,7 @@ export const HeaderWrapper = styled.div`
 
     .divider {
         height: 5px;
-        background-color: #c20cc2;
+        background-color: #c20c0c;
     }
 `
 
@@ -25,17 +25,10 @@ export const HeaderWrapper = styled.div`
 export const HeaderLeft = styled.div`
     display: flex;
 
-    /* .logo {
-        display: block;
-        width: 176px;
-        height: 69px;
-        background-position: 0 0;
-        text-indent: -9999px;
-    }; */
-
     .select-list {
         display: flex;
         line-height: 70px;
+        margin-left: 10px;
     };
 
     .select-item {
@@ -75,11 +68,9 @@ export const HeaderLeft = styled.div`
             left: 50%;
             transform: translate(-50%, 0);
             background-position: -226px 0;
-        }
+        };
 
     }
-
-   
 `
 export const HeaderRight = styled.div`
     display: flex;
@@ -119,5 +110,5 @@ export const HeaderRight = styled.div`
         line-height: 70px;
         font-size: 16px;
         cursor: pointer;
-    }
+    };
 `
