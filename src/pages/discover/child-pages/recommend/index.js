@@ -1,11 +1,25 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-const Recommend = memo(() => {
+import { getTopBannersAction } from './store/action';
+import { selectTopBanners } from './store/selector';
+
+const Recommend = () => {
+    const dispatch = useDispatch();
+
+    const topBanners = useSelector(selectTopBanners);
+
+    useEffect(() => {
+        dispatch(getTopBannersAction())
+    }, [dispatch]);
+
+    
+
     return (
         <div>
-            <h2>Recommend</h2>
+            <h2>Recommend: {topBanners.length} </h2>
         </div>
     );
-});
+};
 
-export default Recommend;
+export default memo(Recommend);

@@ -1,0 +1,4 @@
+export const RECOMMEND_ACTION_TYPE = {
+    CHANGE_TOP_BANNERS: 'recommend/CHANGE_TOP_BANNERS',
+
+}
