@@ -4,7 +4,7 @@ import { RECOMMEND_ACTION_TYPE as actionTypes} from './type';
 import { getTopBanners } from '../../../../../services/recommend';
 import { createAcion } from '../../../../../store/create-actions';
 
-const changeTopBanner = (response) => createAcion(actionTypes.CHANGE_TOP_BANNERS, response)
+const changeTopBanner = (topBanners) => createAcion(actionTypes.CHANGE_TOP_BANNERS, topBanners)
 
 export const getTopBannersAction = () => async(dispatch) => {
     try{

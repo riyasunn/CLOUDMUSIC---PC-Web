@@ -1,24 +1,18 @@
-import React, { memo, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { memo } from 'react';
 
-import { getTopBannersAction } from './store/action';
-import { selectTopBanners } from './store/selector';
+
+import { RecommendWrapper } from './style';
+import TopBanner from './child-components/top-banner/index';
+
 
 const Recommend = () => {
-    const dispatch = useDispatch();
 
-    const topBanners = useSelector(selectTopBanners);
 
-    useEffect(() => {
-        dispatch(getTopBannersAction())
-    }, [dispatch]);
-
-    
 
     return (
-        <div>
-            <h2>Recommend: {topBanners.length} </h2>
-        </div>
+        <RecommendWrapper>
+            <TopBanner/>
+        </RecommendWrapper>
     );
 };
 

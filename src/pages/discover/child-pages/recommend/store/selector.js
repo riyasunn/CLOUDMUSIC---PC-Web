@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 
-const selectRecommendReducer = (state) => state.recommend;
+const selectRecommendReducer = (state) => state.get("recommend");
 
 export const selectTopBanners = createSelector(
     [selectRecommendReducer],
-    (recommend) => recommend.topBanners,
+    (recommend) => recommend.get("topBanners"),
 );
