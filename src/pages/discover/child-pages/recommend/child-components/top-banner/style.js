@@ -4,7 +4,7 @@ export const BannerWrapper = styled.div`
     background: url(${props => props.bgImg}) center/6000px;
     .banner {
         height: 270px;
-        background-color: lightblue;
+        /* background-color: lightblue; */
 
         display: flex;
         position: relative;
@@ -13,7 +13,7 @@ export const BannerWrapper = styled.div`
 
 export const BannerLeft = styled.div`
     width: 730px;
-    background-color: pink;
+    /* background-color: pink; */
 
     .banner-item {
         /* overflow: hidden; */
