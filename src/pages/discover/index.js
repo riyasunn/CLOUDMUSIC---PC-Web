@@ -16,7 +16,7 @@ const Discover = memo((props) => {
         request({
             url: "/banner"
         }).then(res => {
-            console.log(res)
+            // console.log(res)
         })
     }, []);
     

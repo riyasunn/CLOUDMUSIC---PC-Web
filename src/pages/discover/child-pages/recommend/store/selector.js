@@ -6,3 +6,8 @@ export const selectTopBanners = createSelector(
     [selectRecommendReducer],
     (recommend) => recommend.get("topBanners"),
 );
+
+export const selectHotRecommends = createSelector(
+    [selectRecommendReducer],
+    (recommend) => recommend.get("hotRecommends"),
+);

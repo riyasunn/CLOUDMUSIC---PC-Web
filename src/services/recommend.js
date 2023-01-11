@@ -5,3 +5,12 @@ export const getTopBanners = () => {
         url: '/banner'
     });
 };
+
+export const getHotRecommends = () => {
+    return request({
+        url: '/personalized',
+        params: {
+            limit: 8
+        }
+    });
+};
