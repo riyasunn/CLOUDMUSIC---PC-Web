@@ -14,3 +14,12 @@ export const getHotRecommends = () => {
         }
     });
 };
+
+export const getNewAlbums = () => {
+    return request({
+        url: '/album/new',
+        params: {
+            limit: 10
+        },
+    });
+};

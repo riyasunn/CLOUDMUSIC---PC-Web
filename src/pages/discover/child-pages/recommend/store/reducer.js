@@ -5,6 +5,7 @@ import { RECOMMEND_ACTION_TYPE as actionTypes} from './type';
 const defaultState = Map({
     topBanners: [],
     hotRecommends: [],
+    newAblums: [],
 });
 
 const reducer = (state = defaultState, action ) => {
@@ -17,7 +18,9 @@ const reducer = (state = defaultState, action ) => {
         case actionTypes.CHANGE_HOT_RECOMMEND:
             return state.set("hotRecommends", payload);
 
-        
+        case actionTypes.CHANGE_NEW_ALBUMS:
+            return state.set("newAlbums", payload);
+            
         default:
             return state;
     }
