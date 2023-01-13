@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useRef} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectNewAlbums } from '../../store/selector';
@@ -19,15 +19,19 @@ const NewAlbum = memo(() => {
         dispatch(getNewAlbumsAction())
     }, [dispatch]);
 
-    console.log(newAblums);
+    // console.log(newAblums);
+
+    const newAlbumRef = useRef();
 
     return (
         <NewAlbumWrapper>
             <RcmThemeHeader title="New album"/>
             <div className='content'>
-                <button className='arrow arrow-left sprite_02'></button>
+                <button className='arrow arrow-left sprite_02'
+                        onClick={e => newAlbumRef.current.prev()}
+                ></button>
                 <div className='album'>
-                    <Carousel dots={false}>
+                    <Carousel dots={false} ref={newAlbumRef}>
                     {
                         [0, 1].map((item) => {
                             return (
@@ -52,7 +56,9 @@ const NewAlbum = memo(() => {
                     }
                     </Carousel>
                 </div>
-                <button className='arrow arrow-right sprite_02'></button>
+                <button className='arrow arrow-right sprite_02'
+                        onClick={e => newAlbumRef.current.next()}
+                ></button>
             </div>
         </NewAlbumWrapper>
     );
