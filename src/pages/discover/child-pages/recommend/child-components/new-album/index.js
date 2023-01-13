@@ -7,6 +7,7 @@ import { getNewAlbumsAction } from '../../store/action';
 import { NewAlbumWrapper, } from './style';
 import RcmThemeHeader from '../../../../../../components/theme-header-recommend';
 import { Carousel } from 'antd';
+import NewAlbumCover from '../../../../../../components/new-album-cover';
 
 
 const NewAlbum = memo(() => {
@@ -32,9 +33,16 @@ const NewAlbum = memo(() => {
                             return (
                                 <div key={item} className="page">
                                     { 
-                                        newAblums && newAblums.slice(item * 5, (item + 1) * 5).map((item) => {
+                                        newAblums && newAblums.slice(item * 5, (item + 1) * 5).map((items) => {
                                             return (
-                                                <div key={item.id}>{item.name}</div>
+                                                <NewAlbumCover key={items.id} 
+                                                               info={items} 
+                                                               size="100" 
+                                                               width="118px" 
+                                                               height="100px" 
+                                                               bgp="-570px"
+                                                />
+
                                             )
                                         })
                                     }

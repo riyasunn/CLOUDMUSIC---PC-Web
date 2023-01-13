@@ -7,3 +7,7 @@ export const getCount = (count) => {
         return Math.floor(count/100000)/10  + "M";
     }
 };
+
+export const setImageSize = (imgUrl, size) => {
+    return `${imgUrl}?param=${size}x${size}`;
+};
