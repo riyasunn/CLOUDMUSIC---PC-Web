@@ -16,3 +16,19 @@ export const selectNewAlbums = createSelector(
     [selectRecommendReducer],
     (recommend) => recommend.get("newAlbums"),
 );
+
+//selector for rankings:
+export const selectUpRanking = createSelector(
+    [selectRecommendReducer],
+    (recommend) => recommend.get("upRanking"),
+);
+
+export const selectNewRanking = createSelector(
+    [selectRecommendReducer],
+    (recommend) => recommend.get("newRanking"),
+);
+
+export const selectOriginalRanking = createSelector(
+    [selectRecommendReducer],
+    (recommend) => recommend.get("originalRanking"),
+);

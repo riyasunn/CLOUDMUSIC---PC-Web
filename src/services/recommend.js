@@ -23,3 +23,20 @@ export const getNewAlbums = () => {
         },
     });
 };
+
+
+// can get Top list name & id, then get details for each top list
+export const getTopListInfo = () => {
+    return request({
+        url: '/toplist'
+    });
+};
+
+export const getRankingList = (id) => {
+    return request({
+        url: '/playlist/detail',
+        params: {
+            id
+        }
+    });
+};

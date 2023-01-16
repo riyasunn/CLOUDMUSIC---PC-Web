@@ -6,6 +6,11 @@ const defaultState = Map({
     topBanners: [],
     hotRecommends: [],
     newAblums: [],
+
+    upRanking: {},
+    newRanking: {},
+    originalRanking: {},
+
 });
 
 const reducer = (state = defaultState, action ) => {
@@ -20,7 +25,17 @@ const reducer = (state = defaultState, action ) => {
 
         case actionTypes.CHANGE_NEW_ALBUMS:
             return state.set("newAlbums", payload);
-            
+
+        //cases for rankings:
+        case actionTypes.CHANGE_UP_RANKING:
+            return state.set("upRanking", payload);
+
+        case actionTypes.CHANGE_NEW_RANKING:
+            return state.set("newRanking", payload);
+
+        case actionTypes.CHANGE_ORIGINAL_RANKING:
+            return state.set("originalRanking", payload);
+
         default:
             return state;
     }
