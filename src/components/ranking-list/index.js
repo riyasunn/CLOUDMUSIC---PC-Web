@@ -7,7 +7,7 @@ import { RankingListWrapper, } from './style';
 
 
 const RankingList = memo((props) => {
-    const { info } = props;
+    const { info, name } = props;
     const { tracks=[] } = info;
 
     return (
@@ -18,7 +18,7 @@ const RankingList = memo((props) => {
                     <a href='/待更新' className='image_cover'> </a>
                 </div>
                 <div className='info'>
-                    <a href='/待更新'>{info.name}</a>
+                    <a href='/待更新'>{name}</a>
                     <div>
                         <button className='btn play sprite_02'>a</button>
                         <button className='btn favor sprite_02'>b</button>
@@ -46,7 +46,7 @@ const RankingList = memo((props) => {
             }
             </div>
             <div className='footer'>
-            
+                <a href='/待更新' >All &gt;</a>
             </div>
             
         </RankingListWrapper>

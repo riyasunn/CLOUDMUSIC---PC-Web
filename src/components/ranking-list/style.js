@@ -16,10 +16,10 @@ export const RankingListWrapper = styled.div`
     
 
         .info {
-            margin: 5px 0 0 20px;
+            margin: 5px 0 0 15px;
 
             a {
-                font-size: 18px;
+                font-size: 14px;
                 color: #333;
                 font-weight: 700;
             };
@@ -34,13 +34,18 @@ export const RankingListWrapper = styled.div`
             };
 
             .play {
-
+                
                 background-position: -267px -205px;
+                :hover {
+                    filter: brightness(1.1);
+                }
             };
 
             .favor {
-
                 background-position: -300px -205px;
+                :hover {
+                    filter: brightness(1.1);
+                }
             };
         };
     };
@@ -122,6 +127,19 @@ export const RankingListWrapper = styled.div`
                 }
             }
 
+        }
+    }
+
+    .footer {
+        font-size: 12px;
+        height: 32px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-right: 15px;
+
+        a {
+            color: #000;
         }
     }
 `
