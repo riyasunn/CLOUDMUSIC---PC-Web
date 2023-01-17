@@ -29,7 +29,7 @@ const Ranking = memo(() => {
 
     return (
         <RankingWrapper>
-            <RcmThemeHeader title="Ranking"/>
+            <RcmThemeHeader title="Top ranking"/>
             <div className='topRanking'>
                 <RankingList info={upRanking}/>
                 <RankingList info={newRanking}/>

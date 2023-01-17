@@ -31,7 +31,7 @@ const TopBanner = () => {
             <div className='banner wrap-v2'>
                 <BannerLeft> 
                     <Carousel effect="fade" autoplay ref={bannerRef} beforeChange={changeBanner}>
-                        {topBanners.map((item) => {
+                        {topBanners && topBanners.map((item) => {
                             return (
                                 <div className="banner-item" key={item.imageUrl}>
                                     <img className='img' src={item.imageUrl} alt="banner images"/>

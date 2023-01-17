@@ -57,11 +57,11 @@ export const getRankingAction = (id) => async(dispatch) => {
         switch (id) {
             case 19723756:
                 dispatch(changeUpRanking(response.data.playlist));
-                // console.log("get upRanking", response.data.playlist);
+                console.log("get upRanking", response.data.playlist);
                 break;
             case 3779629:
                 dispatch(changeNewRanking(response.data.playlist));
-                // console.log("get newRanking", response.data.playlist);
+                console.log("get newRanking", response.data.playlist);
                 break;
             case 2884035:
                 dispatch(changeOriginalRanking(response.data.playlist));

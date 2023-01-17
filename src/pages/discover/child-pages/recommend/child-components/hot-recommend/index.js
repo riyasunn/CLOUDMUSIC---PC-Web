@@ -23,7 +23,7 @@ const HotRecommend = memo(() => {
                 <div>
                     <RcmThemeHeader title="Hot recommend" keywords={["Chinese music", "Popular", "Rock", "Ballad", "Electronic music" ]}/>
                     <div className='recommend-list'>
-                        {hotRecommends.map((item) => {
+                        {hotRecommends && hotRecommends.map((item) => {
                             return (
                                 <AlbumCover key={item.id} info={item}/>
                             )
