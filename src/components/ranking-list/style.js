@@ -46,7 +46,7 @@ export const RankingListWrapper = styled.div`
     };
 
     .list{
-        /* margin: 40px 0px 0px 20px; */
+        margin-top: 40px;
         .list-item{
             position: relative;
             display: flex;
@@ -64,21 +64,64 @@ export const RankingListWrapper = styled.div`
                 margin-left: 10px;
             };
 
-            .info {
+            .list-detail {
                 color: #000;
-
+                width: 170px;
+                height: 17px;
+                line-height: 17px;
+                display: flex;
+                justify-content: space-between;
+                
                 .name {
-
+                    flex: 1;
                 };
 
                 .operate {
                     display: flex;
+                    align-items: center;
+                    width: 82px;
+                    display: none;
 
                     .btn {
                         width: 17px;
+                        height: 17px;
+                        cursor: pointer;
+                        margin-left: 8px;
+                    }
+
+                    .play {
+                        background-position: -267px -268px;
+                        opacity: .5;
+                        :hover {
+                            opacity: 1;
+                        }
+                    };
+
+                    .add {
+                        position: relative;
+                        background-position: 0 -700px;
+                        top: 2px;
+                        opacity: .5;
+                        :hover {
+                            opacity: 1;
+                        }
+                    };
+                    .favor {
+                        background-position: -297px -268px;
+                        opacity: .5;
+                        :hover {
+                            opacity: 1;
+                        }
                     }
                 }
             }
+
+            &:hover {
+                .operate {
+                    display: block;
+                }
+            }
+
         }
     }
 `

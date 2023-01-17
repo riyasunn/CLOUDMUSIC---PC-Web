@@ -32,12 +32,12 @@ const RankingList = memo((props) => {
                     return (
                         <div key={item.id} className='list-item'>
                             <div className='index'>{index+1}</div>
-                            <div className='info'>
+                            <div className='list-detail'>
                                 <a href='/待更新' className='name text-nowrap'>{item.name}</a>
                                 <div className='operate'>
-                                    <button className='btn sprite_icon2 play'></button>
+                                    <button className='btn sprite_02 play'></button>
                                     <button className='btn sprite_icon2 add'></button>
-                                    <button className='btn sprite_icon2 favor'></button>
+                                    <button className='btn sprite_02 favor'></button>
                                 </div>
                             </div>
                         </div>
