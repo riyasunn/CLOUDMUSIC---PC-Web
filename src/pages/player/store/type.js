@@ -1,0 +1,3 @@
+export const PLAYER_ACTION_TYPE = {
+    CHANGE_CURRENT_SONG: "player/CHANGE_CURRENT_SONG",
+};

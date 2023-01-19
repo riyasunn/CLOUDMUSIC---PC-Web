@@ -15,9 +15,9 @@ const Ranking = memo(() => {
     const upRanking = useSelector(selectUpRanking);
     const newRanking = useSelector(selectNewRanking);
     const originalRanking = useSelector(selectOriginalRanking);
-    console.log("up", upRanking);
-    console.log("new", newRanking);
-    console.log("original", originalRanking);
+    // console.log("up", upRanking);
+    // console.log("new", newRanking);
+    // console.log("original", originalRanking);
 
     // getTopListInfo().then(res=> console.log('toplist info', res)); //get toplist id, will use in the getRankingList
     // getRankingList(19723756).then(res=> console.log("get ranking", res));

@@ -9,6 +9,7 @@ import store from './store/index';
 
 import AppHeader from './components/app-header';
 import AppFooter from './components/app-footer';
+import PlayerBar from './pages/player/player-bar';
 
 
 
@@ -19,6 +20,7 @@ const App = memo(() => {
                 <AppHeader />
                 {renderRoutes(routes)}
                 <AppFooter/>
+                <PlayerBar />
             </HashRouter>
         </Provider>
     ); 
