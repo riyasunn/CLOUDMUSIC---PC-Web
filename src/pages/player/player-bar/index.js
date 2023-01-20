@@ -1,36 +1,47 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { formatDate } from '../../../utils/format-utils';
+import { setImageSize, formatDate, getPlaySong } from '../../../utils/format-utils';
 
 import { Slider } from 'antd';
 import { PlayerBarWrapper, Control, PlayInfo, Operator } from './style';
 import { getSongDeatilAction } from '../store/action';
 import { selectCurrentSong } from '../store/selector';
-import { setImageSize } from '../../../utils/format-utils';
 // import { getSongDetail } from '../../../services/player';
 
 const PlayerBar = memo(() => {
+
+    //redux hooks:
     const dispatch = useDispatch();
     const currentSong = useSelector(selectCurrentSong);
     console.log("playBar currentSong", currentSong);
 
+    //other hooks:
     useEffect(()=> {
         // getSongDetail(247579).then(res => console.log("get song info", res) )
-        dispatch(getSongDeatilAction(247579))
+        dispatch(getSongDeatilAction(1355394805))
     }, [dispatch]);
 
+    const audioRef = useRef();
+
+    //other handle:
     const songPic = (currentSong.al && currentSong.al.picUrl) || "";
     const singerName = (currentSong.ar && currentSong.ar[0].name)  || "Unknown";
     const duration = currentSong.dt || 0;
     const showDuration = formatDate(duration, "mm:ss");
+
+    //handle function:
+    const playMusic = () => {
+        audioRef.current.src = getPlaySong(currentSong.id);
+        audioRef.current.play();
+    }
 
     return (
         <PlayerBarWrapper className='sprite_player'>
             <div className='content wrap-v2'>
                 <Control className='btn'>
                     <button className='sprite_player prev '></button>
-                    <button className='sprite_player play '></button>
+                    <button className='sprite_player play ' onClick={e => playMusic()}></button>
                     <button className='sprite_player next '></button>
                 </Control>
                 <PlayInfo>
@@ -67,6 +78,7 @@ const PlayerBar = memo(() => {
                     </div>
                 </Operator>  
             </div>
+            <audio ref={audioRef}/>
         </PlayerBarWrapper>
     );
 });

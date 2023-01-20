@@ -12,6 +12,7 @@ export const setImageSize = (imgUrl, size) => {
     return `${imgUrl}?param=${size}x${size}`;
 };
 
+//format millisecond to time
 export function formatDate(time, fmt) {
     let date = new Date(time);
   
@@ -44,4 +45,9 @@ export function formatMonthDay(time) {
 
 export function formatMinuteSecond(time) {
     return formatDate(time, "mm:ss");
+}
+
+//format song src
+export const getPlaySong = (id) => {
+    return `https://music.163.com/song/media/outer/url?id=${id}.mp3`;
 }
