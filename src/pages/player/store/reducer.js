@@ -1,5 +1,5 @@
 import { Map } from 'immutable';
-import { PLAYER_ACTION_TYPE } from './type';
+import { PLAYER_ACTION_TYPE as actionTypes} from './type';
 
 const defaultState = Map({
     currentSong: {},
@@ -9,7 +9,7 @@ const reducer = (state = defaultState, action) => {
     const { type, payload } = action;
 
     switch(type) {
-        case PLAYER_ACTION_TYPE.CHANGE_CURRENT_SONG:
+        case actionTypes.CHANGE_CURRENT_SONG:
             return state.set("currentSong", payload);
         default:
             return state;

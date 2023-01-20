@@ -1,18 +1,29 @@
 import React, { memo, useEffect } from 'react';
-import { useDispatch, useSlector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { formatDate } from '../../../utils/format-utils';
 
 import { Slider } from 'antd';
 import { PlayerBarWrapper, Control, PlayInfo, Operator } from './style';
 import { getSongDeatilAction } from '../store/action';
+import { selectCurrentSong } from '../store/selector';
+import { setImageSize } from '../../../utils/format-utils';
 // import { getSongDetail } from '../../../services/player';
 
 const PlayerBar = memo(() => {
     const dispatch = useDispatch();
+    const currentSong = useSelector(selectCurrentSong);
+    console.log("playBar currentSong", currentSong);
 
     useEffect(()=> {
         // getSongDetail(247579).then(res => console.log("get song info", res) )
-        dispatch(getSongDeatilAction())
+        dispatch(getSongDeatilAction(247579))
     }, [dispatch]);
+
+    const songPic = (currentSong.al && currentSong.al.picUrl) || "";
+    const singerName = (currentSong.ar && currentSong.ar[0].name)  || "Unknown";
+    const duration = currentSong.dt || 0;
+    const showDuration = formatDate(duration, "mm:ss");
 
     return (
         <PlayerBarWrapper className='sprite_player'>
@@ -25,21 +36,21 @@ const PlayerBar = memo(() => {
                 <PlayInfo>
                     <div className='image'>
                         <a href='/待更新'>
-                            <img src='https://p1.music.126.net/xUoJEQGDf83T6zstKVNqPQ==/109951167746420311.jpg?param=34y34' alt='' />
+                            <img src={setImageSize(songPic, 34)} alt='' />
                             <div className='sprite_player cover'></div>
                         </a>
                     </div>
                     <div className='info'>
                         <div className='song'>
-                            <a href='/待更新' className='song-name'>歌曲名待更新</a>
-                            <a href='/待更新' className='artiest-name'>作者名待更新</a>
+                            <a href='/待更新' className='song-name'>{currentSong.name}</a>
+                            <a href='/待更新' className='artiest-name'>{singerName}</a>
                         </div>
                         <div className='progress'>
                             <Slider />
                             <div className='time'>
                                 <span className='now-time'>12:00</span>
                                 <span className='divider'>/</span>
-                                <span className='duration'>1:00:00</span>
+                                <span className='duration'>{showDuration}</span>
                             </div>
                         </div>
                     </div>
