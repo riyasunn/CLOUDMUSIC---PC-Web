@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef } from 'react';
+import React, { memo, useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setImageSize, formatDate, getPlaySong } from '../../../utils/format-utils';
@@ -10,6 +10,8 @@ import { selectCurrentSong } from '../store/selector';
 // import { getSongDetail } from '../../../services/player';
 
 const PlayerBar = memo(() => {
+    //props and state:
+    const [ currentTime, setCurrentTime] = useState(0);
 
     //redux hooks:
     const dispatch = useDispatch();
@@ -29,11 +31,16 @@ const PlayerBar = memo(() => {
     const singerName = (currentSong.ar && currentSong.ar[0].name)  || "Unknown";
     const duration = currentSong.dt || 0;
     const showDuration = formatDate(duration, "mm:ss");
-
+    const showCurrentTime = formatDate(currentTime, "mm:ss");
     //handle function:
     const playMusic = () => {
         audioRef.current.src = getPlaySong(currentSong.id);
         audioRef.current.play();
+    };
+
+    const timeUpdate = (e) => {
+        console.log("timeupdate",e.target.currentTime);
+        setCurrentTime(e.target.currentTime *1000)
     }
 
     return (
@@ -41,7 +48,7 @@ const PlayerBar = memo(() => {
             <div className='content wrap-v2'>
                 <Control className='btn'>
                     <button className='sprite_player prev '></button>
-                    <button className='sprite_player play ' onClick={e => playMusic()}></button>
+                    <button className='sprite_player play ' onClick={playMusic}></button>
                     <button className='sprite_player next '></button>
                 </Control>
                 <PlayInfo>
@@ -59,7 +66,7 @@ const PlayerBar = memo(() => {
                         <div className='progress'>
                             <Slider />
                             <div className='time'>
-                                <span className='now-time'>12:00</span>
+                                <span className='now-time'>{showCurrentTime}</span>
                                 <span className='divider'>/</span>
                                 <span className='duration'>{showDuration}</span>
                             </div>
@@ -78,7 +85,7 @@ const PlayerBar = memo(() => {
                     </div>
                 </Operator>  
             </div>
-            <audio ref={audioRef}/>
+            <audio ref={audioRef} onTimeUpdate={e => timeUpdate(e)}/>
         </PlayerBarWrapper>
     );
 });
