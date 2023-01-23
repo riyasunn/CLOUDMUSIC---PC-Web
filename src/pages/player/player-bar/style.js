@@ -33,7 +33,7 @@ export const Control = styled.div`
     .play {
         width: 36px;
         height: 36px;
-        background-position: 0 -203px;
+        background-position: 0 ${props => props.isPlaying ? "-165px" : "-203px" };
         margin: 0 8px;
     };
 

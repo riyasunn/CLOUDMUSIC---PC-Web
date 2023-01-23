@@ -14,18 +14,23 @@ const PlayerBar = memo(() => {
     const [ currentTime, setCurrentTime] = useState(0);
     const [ progress, setProgress ] = useState(0); 
     const [ isChanging, setIsChanging ] = useState(false);
+    const [ isPlaying, setIsPlaying ] = useState(false);
+
     //redux hooks:
     const dispatch = useDispatch();
     const currentSong = useSelector(selectCurrentSong);
     // console.log("playBar currentSong", currentSong);
 
     //other hooks:
+    const audioRef = useRef();
     useEffect(()=> {
         // getSongDetail(247579).then(res => console.log("get song info", res) )
         dispatch(getSongDeatilAction(1355394805))
     }, [dispatch]);
-
-    const audioRef = useRef();
+    useEffect(()=> {
+        audioRef.current.src = getPlaySong(currentSong.id);
+    }, [currentSong]);
+    
 
     //other handle:
     const songPic = (currentSong.al && currentSong.al.picUrl) || "";
@@ -36,26 +41,27 @@ const PlayerBar = memo(() => {
 
     //handle function:
     const playMusic = () => {
-        audioRef.current.src = getPlaySong(currentSong.id);
-        audioRef.current.play();
+        isPlaying ? audioRef.current.pause() : audioRef.current.play();
+        setIsPlaying(!isPlaying);
     };
 
     const timeUpdate = (e) => {
         console.log("timeupdate current-time: ",e.target.currentTime);
-        setCurrentTime(e.target.currentTime * 1000);
+        
         if(!isChanging) { 
             console.log("progress value when not change slider: ", currentTime, currentTime / duration * 100);
             setProgress(currentTime / duration * 100); 
+            setCurrentTime(e.target.currentTime * 1000);
         }
     };
 
     const sliderChange = useCallback((value) => {
         console.log("change value", value);
         setIsChanging(true);
-        const duringChangeCurrentTime = value / 100 * duration / 1000;
-        setCurrentTime(duringChangeCurrentTime * 1000);
+        const duringChangeCurrentTime = value / 100 * duration;
+        setCurrentTime(duringChangeCurrentTime);
         setProgress(value); 
-    }, []);
+    }, [duration]);
 
     const sliderAfterChange = useCallback((value)=> {
         console.log("end", value);
@@ -65,12 +71,16 @@ const PlayerBar = memo(() => {
         setCurrentTime(currentTimeAfterChange * 1000);
         console.log("after change display current-time", currentTime);
         setIsChanging(false);
-    }, [duration]);
+
+        if (!isPlaying) {
+            playMusic();
+        };
+    }, [duration, isPlaying, playMusic]);
 
     return (
         <PlayerBarWrapper className='sprite_player'>
             <div className='content wrap-v2'>
-                <Control className='btn'>
+                <Control isPlaying={isPlaying} >
                     <button className='sprite_player prev '></button>
                     <button className='sprite_player play ' onClick={playMusic}></button>
                     <button className='sprite_player next '></button>
