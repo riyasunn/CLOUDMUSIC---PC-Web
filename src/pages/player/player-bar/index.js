@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { setImageSize, formatDate, getPlaySong } from '../../../utils/format-utils';
 
+import { NavLink } from 'react-router-dom';
 import { Slider } from 'antd';
 import { PlayerBarWrapper, Control, PlayInfo, Operator } from './style';
 import { getSongDeatilAction } from '../store/action';
@@ -40,23 +41,23 @@ const PlayerBar = memo(() => {
     const showCurrentTime = formatDate(currentTime, "mm:ss");
 
     //handle function:
-    const playMusic = () => {
+    const playMusic = useCallback(() => {
         isPlaying ? audioRef.current.pause() : audioRef.current.play();
         setIsPlaying(!isPlaying);
-    };
+    }, [isPlaying]);
 
     const timeUpdate = (e) => {
-        console.log("timeupdate current-time: ",e.target.currentTime);
+        // console.log("timeupdate current-time: ",e.target.currentTime);
         
         if(!isChanging) { 
-            console.log("progress value when not change slider: ", currentTime, currentTime / duration * 100);
+            // console.log("progress value when not change slider: ", currentTime, currentTime / duration * 100);
             setProgress(currentTime / duration * 100); 
             setCurrentTime(e.target.currentTime * 1000);
         }
     };
 
     const sliderChange = useCallback((value) => {
-        console.log("change value", value);
+        // console.log("change value", value);
         setIsChanging(true);
         const duringChangeCurrentTime = value / 100 * duration;
         setCurrentTime(duringChangeCurrentTime);
@@ -64,12 +65,12 @@ const PlayerBar = memo(() => {
     }, [duration]);
 
     const sliderAfterChange = useCallback((value)=> {
-        console.log("end", value);
+        // console.log("end", value);
         const currentTimeAfterChange = value / 100 * duration / 1000;
         audioRef.current.currentTime = currentTimeAfterChange;
-        console.log("after change music current-time", audioRef.current.currentTime )
+        // console.log("after change music current-time", audioRef.current.currentTime )
         setCurrentTime(currentTimeAfterChange * 1000);
-        console.log("after change display current-time", currentTime);
+        // console.log("after change display current-time", currentTime);
         setIsChanging(false);
 
         if (!isPlaying) {
@@ -87,10 +88,10 @@ const PlayerBar = memo(() => {
                 </Control>
                 <PlayInfo>
                     <div className='image'>
-                        <a href='/待更新'>
+                        <NavLink to='/discover/player'>
                             <img src={setImageSize(songPic, 34)} alt='' />
                             <div className='sprite_player cover'></div>
-                        </a>
+                        </NavLink>
                     </div>
                     <div className='info'>
                         <div className='song'>

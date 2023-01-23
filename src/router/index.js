@@ -8,6 +8,7 @@ import DJradio from "../pages/discover/child-pages/dj-radio";
 import Ranking from "../pages/discover/child-pages/ranking";
 import Recommend from "../pages/discover/child-pages/recommend";
 import Songs from "../pages/discover/child-pages/songs";
+import Player from "../pages/player/index";
 
 import Friend from "../pages/friend";
 import MyMusic from "../pages/my-music";
@@ -54,6 +55,10 @@ const routes = [
             {
               path: "/discover/album",
               component: Album,
+            },
+            {
+              path: "/discover/player",
+              component: Player,
             },
         ]
     },

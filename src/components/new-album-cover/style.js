@@ -33,7 +33,9 @@ export const NewAlbumCoverWrapper = styled.div`
 
         .artist {
             color: #666;
-            
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
     }
 

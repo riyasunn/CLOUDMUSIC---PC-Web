@@ -35,7 +35,7 @@ const NewAlbum = memo(() => {
                     {
                         [0, 1].map((item) => {
                             return (
-                                <div key={item} className="page">
+                                <div key={item} className="page text-nowrap">
                                     { 
                                         newAblums && newAblums.slice(item * 5, (item + 1) * 5).map((items) => {
                                             return (
