@@ -7,3 +7,8 @@ export const selectCurrentSong = createSelector(
     [selectPlayerReducer],
     (player) => player.get("currentSong")
 );
+
+export const selectPlayList = createSelector(
+    [selectPlayerReducer],
+    (player) => player.get("playList")
+);

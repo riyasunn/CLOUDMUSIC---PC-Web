@@ -1,14 +1,24 @@
 import React, { memo } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { setImageSize } from '../../utils/format-utils';
 
 import { RankingListWrapper, } from './style';
+import { getSongDeatilAction } from '../../pages/player/store';
 
 
 
 const RankingList = memo((props) => {
+    //props and state:
     const { info, name } = props;
     const { tracks=[] } = info;
+    //redux hooks:
+    const dispatch = useDispatch();
+    //other handles:
+    const playMusic = (item) => {
+        // console.log("play-music", item.id);
+        dispatch(getSongDeatilAction(item.id));
+    }
 
     return (
         <RankingListWrapper>
@@ -35,7 +45,7 @@ const RankingList = memo((props) => {
                             <div className='list-detail'>
                                 <a href='/待更新' className='name text-nowrap'>{item.name}</a>
                                 <div className='operate'>
-                                    <button className='btn sprite_02 play'></button>
+                                    <button className='btn sprite_02 play' onClick={e => playMusic(item)}></button>
                                     <button className='btn sprite_icon2 add'></button>
                                     <button className='btn sprite_02 favor'></button>
                                 </div>

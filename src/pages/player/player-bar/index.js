@@ -24,10 +24,12 @@ const PlayerBar = memo(() => {
 
     //other hooks:
     const audioRef = useRef();
+
     useEffect(()=> {
         // getSongDetail(247579).then(res => console.log("get song info", res) )
         dispatch(getSongDeatilAction(1355394805))
     }, [dispatch]);
+
     useEffect(()=> {
         audioRef.current.src = getPlaySong(currentSong.id);
     }, [currentSong]);
@@ -42,8 +44,8 @@ const PlayerBar = memo(() => {
 
     //handle function:
     const playMusic = useCallback(() => {
-        isPlaying ? audioRef.current.pause() : audioRef.current.play();
-        setIsPlaying(!isPlaying);
+            isPlaying ? audioRef.current.pause() : audioRef.current.play();
+            setIsPlaying(!isPlaying);
     }, [isPlaying]);
 
     const timeUpdate = (e) => {
