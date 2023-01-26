@@ -28,6 +28,9 @@ export const Control = styled.div`
         width: 28px;
         height: 28px;
         background-position: 0 -130px;
+        :hover {
+            filter: drop-shadow(0 0 0px rgb(0, 255, 255));
+        }
     };
 
     .play {
@@ -35,12 +38,18 @@ export const Control = styled.div`
         height: 36px;
         background-position: 0 ${props => props.isPlaying ? "-165px" : "-203px" };
         margin: 0 8px;
+        :hover {
+            filter: drop-shadow(0 0 1px rgb(0, 255, 255));
+        }
     };
 
     .next {
         width: 28px;
         height: 28px;
         background-position: -80px -130px;
+        :hover {
+            filter: drop-shadow(0 0 0px rgb(0, 255, 255));
+        }
     }
 `
 
@@ -154,10 +163,15 @@ export const Operator = styled.div`
         
         .volume {
             background-position: -2px -248px;
+            opacity: .7;
+            :hover {
+                opacity: 1;
+                filter: drop-shadow(0 0px 3px rgb(0 255 255));
+            }
         }
 
         .loop {
-            opacity: .5;
+            opacity: .7;
             /* background-position: -66px -248px; */
             background-position: ${props => {
                 switch(props.sequence) {
@@ -170,17 +184,24 @@ export const Operator = styled.div`
                 }
            }};
 
-           :hover {
-            opacity: 1;
-           }
+            :hover {
+                opacity: 1;
+                filter: drop-shadow(0 0px 3px rgb(0 255 255));
+            }
         }
 
         .play-list {
             width: 59px;
             background-position: -42px -68px; 
+            opacity: .7;
           
             /* color: #ccc; */
             /* padding-left: 18px; */
+            :hover {
+                filter: drop-shadow(0 0px 3px rgb(0 255 255));
+                /* box-shadow: 0 0 50px white; */
+                opacity: 1;
+            }
         }
 
         .count {

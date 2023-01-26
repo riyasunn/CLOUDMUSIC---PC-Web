@@ -34,9 +34,14 @@ const PlayerBar = memo(() => {
     }, [dispatch]);
 
     useEffect(()=> {
-        audioRef.current.src = getPlaySong(currentSong.id);
-    }, [currentSong]);
-    
+       audioRef.current.src = getPlaySong(currentSong.id);
+        audioRef.current.play().then(res => {
+            setIsPlaying(true);
+        }).catch(err => {
+            setIsPlaying(false);
+            alert("Sorry, no copyright in your region.")
+        })
+    }, [currentSong]); 
 
     //other handle:
     const songPic = (currentSong.al && currentSong.al.picUrl) || "";
@@ -96,7 +101,7 @@ const PlayerBar = memo(() => {
                 <Control isPlaying={isPlaying} >
                     <button className='sprite_player prev ' onClick={e => dispatch(changeMusicAction(-1))}></button>
                     <button className='sprite_player play ' onClick={playMusic}></button>
-                    <button className='sprite_player next ' onClick={e => dispatch(changeMusicAction(+1))}></button>
+                    <button className='sprite_player next ' onClick={e => dispatch(changeMusicAction(1))}></button>
                 </Control>
                 <PlayInfo>
                     <div className='image'>
