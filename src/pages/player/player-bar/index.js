@@ -39,7 +39,7 @@ const PlayerBar = memo(() => {
             setIsPlaying(true);
         }).catch(err => {
             setIsPlaying(false);
-            alert("Sorry, no copyright in your region.")
+            // alert("Sorry, no copyright in your region.")
         })
     }, [currentSong]); 
 
@@ -72,6 +72,17 @@ const PlayerBar = memo(() => {
         };
         dispatch(changeSequenceAction(currentSequence));
     };
+
+    const handleMusicEnded = () => {
+        setIsPlaying(false);
+        if(sequence === 2) {
+            audioRef.current.currentTime = 0;
+            audioRef.current.play();
+            setIsPlaying(true);
+        } else {
+            dispatch(changeMusicAction(1));
+        };
+    }
 
     const sliderChange = useCallback((value) => {
         // console.log("change value", value);
@@ -141,7 +152,10 @@ const PlayerBar = memo(() => {
                     </div>
                 </Operator>  
             </div>
-            <audio ref={audioRef} onTimeUpdate={e => timeUpdate(e)}/>
+            <audio ref={audioRef} 
+                   onTimeUpdate={e => timeUpdate(e)} 
+                   onEnded={e => handleMusicEnded()}
+            />
         </PlayerBarWrapper>
     );
 });
