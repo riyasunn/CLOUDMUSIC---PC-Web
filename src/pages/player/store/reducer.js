@@ -5,11 +5,11 @@ const defaultState = Map({
     currentSong: {},
     playList: [],
     currentSongIndex: 0,
+    sequence: 0, //0 loop; 1 random; 2 single
 });
 
 const reducer = (state = defaultState, action) => {
     const { type, payload } = action;
-
     switch(type) {
         case actionTypes.CHANGE_CURRENT_SONG:
             return state.set("currentSong", payload);
@@ -17,9 +17,12 @@ const reducer = (state = defaultState, action) => {
             return state.set("playList", payload);
         case actionTypes.CHANGE_CURRENT_SONG_INDEX:
             return state.set("currentSongIndex", payload);
+        case actionTypes.CHANGE_SEQUENCE:
+            return state.set("sequence", payload);
+
         default:
             return state;
-    }
+    };
 };
 
 export default reducer;

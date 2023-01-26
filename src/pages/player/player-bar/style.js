@@ -148,7 +148,7 @@ export const Operator = styled.div`
     }
 
     .right {
-        width: 126px;
+        width: 130px;
         margin-left: 20px;
         background-position: -147px -248px;
         
@@ -157,14 +157,38 @@ export const Operator = styled.div`
         }
 
         .loop {
-            background-position: -66px -248px;
+            opacity: .5;
+            /* background-position: -66px -248px; */
+            background-position: ${props => {
+                switch(props.sequence) {
+                    case 1:
+                        return "-66px -248px";
+                    case 2:
+                        return "-66px -344px";
+                    default:
+                        return "-3px -344px";
+                }
+           }};
+
+           :hover {
+            opacity: 1;
+           }
         }
 
         .play-list {
             width: 59px;
             background-position: -42px -68px; 
+          
             /* color: #ccc; */
             /* padding-left: 18px; */
+        }
+
+        .count {
+            width: 20px;
+            color: #9b9b9b;
+            position: absolute;
+            top: 20px;
+            right: 25px;
         }
     }
   

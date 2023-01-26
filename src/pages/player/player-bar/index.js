@@ -6,8 +6,8 @@ import { setImageSize, formatDate, getPlaySong } from '../../../utils/format-uti
 import { NavLink } from 'react-router-dom';
 import { Slider } from 'antd';
 import { PlayerBarWrapper, Control, PlayInfo, Operator } from './style';
-import { getSongDeatilAction } from '../store/action';
-import { selectCurrentSong } from '../store/selector';
+import { getSongDeatilAction, changeSequenceAction, changeMusicAction } from '../store/action';
+import { selectCurrentSong, selectPlayList, selectSequence } from '../store/selector';
 // import { getSongDetail } from '../../../services/player';
 
 const PlayerBar = memo(() => {
@@ -21,6 +21,9 @@ const PlayerBar = memo(() => {
     const dispatch = useDispatch();
     const currentSong = useSelector(selectCurrentSong);
     // console.log("playBar currentSong", currentSong);
+    const sequence = useSelector(selectSequence);
+    const playList = useSelector(selectPlayList);
+    // console.log("player-bar-count", playList.length);
 
     //other hooks:
     const audioRef = useRef();
@@ -50,12 +53,19 @@ const PlayerBar = memo(() => {
 
     const timeUpdate = (e) => {
         // console.log("timeupdate current-time: ",e.target.currentTime);
-        
         if(!isChanging) { 
             // console.log("progress value when not change slider: ", currentTime, currentTime / duration * 100);
             setProgress(currentTime / duration * 100); 
             setCurrentTime(e.target.currentTime * 1000);
         }
+    };
+
+    const changeSequence = () => {
+        let currentSequence = sequence + 1;
+        if (currentSequence > 2) {
+            currentSequence = 0
+        };
+        dispatch(changeSequenceAction(currentSequence));
     };
 
     const sliderChange = useCallback((value) => {
@@ -84,9 +94,9 @@ const PlayerBar = memo(() => {
         <PlayerBarWrapper className='sprite_player'>
             <div className='content wrap-v2'>
                 <Control isPlaying={isPlaying} >
-                    <button className='sprite_player prev '></button>
+                    <button className='sprite_player prev ' onClick={e => dispatch(changeMusicAction(-1))}></button>
                     <button className='sprite_player play ' onClick={playMusic}></button>
-                    <button className='sprite_player next '></button>
+                    <button className='sprite_player next ' onClick={e => dispatch(changeMusicAction(+1))}></button>
                 </Control>
                 <PlayInfo>
                     <div className='image'>
@@ -113,15 +123,16 @@ const PlayerBar = memo(() => {
                         </div>
                     </div>
                 </PlayInfo>
-                <Operator>
+                <Operator sequence={sequence}>
                     <div className='left'>
                         <button className='sprite_player btn favor'></button>
                         <button className='sprite_player btn share'></button>
                     </div>
-                    <div className='right sprite_player'>
+                    <div className='right sprite_player' >
                         <button className='sprite_player btn volume'></button>
-                        <button className='sprite_player btn loop'></button>
+                        <button className='sprite_player btn loop' onClick={e => changeSequence()}></button>
                         <button className='sprite_player btn play-list'></button>
+                        <p className='count'>{playList.length}</p>
                     </div>
                 </Operator>  
             </div>

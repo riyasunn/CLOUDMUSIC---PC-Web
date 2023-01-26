@@ -12,3 +12,8 @@ export const selectPlayList = createSelector(
     [selectPlayerReducer],
     (player) => player.get("playList")
 );
+
+export const selectSequence = createSelector(
+    [selectPlayerReducer],
+    (player) => player.get("sequence")
+);
