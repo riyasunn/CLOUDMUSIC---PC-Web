@@ -8,4 +8,13 @@ export const getSongDetail = (ids) => {
             ids
         }
     })
-}
+};
+
+export const getLyric = (id) => {
+    return request({
+        url: '/lyric',
+        params: {
+            id
+        },
+    });
+};

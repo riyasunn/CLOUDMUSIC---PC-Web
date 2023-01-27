@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 import { Slider } from 'antd';
 import { PlayerBarWrapper, Control, PlayInfo, Operator } from './style';
 import { getSongDeatilAction, changeSequenceAction, changeMusicAction } from '../store/action';
-import { selectCurrentSong, selectPlayList, selectSequence } from '../store/selector';
+import { selectCurrentSong, selectPlayList, selectSequence, selectLyricList } from '../store/selector';
 // import { getSongDetail } from '../../../services/player';
 
 const PlayerBar = memo(() => {
@@ -24,7 +24,8 @@ const PlayerBar = memo(() => {
     const sequence = useSelector(selectSequence);
     const playList = useSelector(selectPlayList);
     // console.log("player-bar-count", playList.length);
-
+    const lyricList = useSelector(selectLyricList);
+    // console.log("lyricList", lyricList);
     //other hooks:
     const audioRef = useRef();
 
@@ -35,12 +36,12 @@ const PlayerBar = memo(() => {
 
     useEffect(()=> {
        audioRef.current.src = getPlaySong(currentSong.id);
-        audioRef.current.play().then(res => {
-            setIsPlaying(true);
-        }).catch(err => {
-            setIsPlaying(false);
-            // alert("Sorry, no copyright in your region.")
-        })
+        // audioRef.current.play().then(res => {
+        //     setIsPlaying(true);
+        // }).catch(err => {
+        //     setIsPlaying(false);
+        //     // alert("Sorry, no copyright in your region.")
+        // })
     }, [currentSong]); 
 
     //other handle:
@@ -58,11 +59,21 @@ const PlayerBar = memo(() => {
 
     const timeUpdate = (e) => {
         // console.log("timeupdate current-time: ",e.target.currentTime);
+        const currentTime = e.target.currentTime * 1000;
         if(!isChanging) { 
             // console.log("progress value when not change slider: ", currentTime, currentTime / duration * 100);
+            setCurrentTime(currentTime);
             setProgress(currentTime / duration * 100); 
-            setCurrentTime(e.target.currentTime * 1000);
-        }
+        };
+        //获取歌词数组，遍历数组，比对
+        let i = 0;
+        for (; i < lyricList.length; i++) {
+            let lyricItem = lyricList[i]; 
+            if (currentTime < lyricItem.time) {
+                break;
+            };
+        };
+        console.log("currentLyric: ", lyricList[i-1]);
     };
 
     const changeSequence = () => {

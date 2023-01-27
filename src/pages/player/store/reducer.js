@@ -6,6 +6,7 @@ const defaultState = Map({
     playList: [],
     currentSongIndex: 0,
     sequence: 0, //0 loop; 1 random; 2 single
+    lyricList: [],
 });
 
 const reducer = (state = defaultState, action) => {
@@ -19,7 +20,8 @@ const reducer = (state = defaultState, action) => {
             return state.set("currentSongIndex", payload);
         case actionTypes.CHANGE_SEQUENCE:
             return state.set("sequence", payload);
-
+        case actionTypes.CHANGE_LYRIC_LIST:
+            return state.set("lyricList", payload);
         default:
             return state;
     };

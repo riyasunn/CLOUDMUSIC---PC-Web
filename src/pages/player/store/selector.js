@@ -17,3 +17,8 @@ export const selectSequence = createSelector(
     [selectPlayerReducer],
     (player) => player.get("sequence")
 );
+
+export const selectLyricList = createSelector(
+    [selectPlayerReducer],
+    (player) => player.get("lyricList")
+);

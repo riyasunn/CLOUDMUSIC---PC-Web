@@ -1,5 +1,6 @@
 import { PLAYER_ACTION_TYPE as actionTypes } from './type';
-import { getSongDetail } from '../../../services/player';
+import { getSongDetail, getLyric } from '../../../services/player';
+import { parseLyric } from '../../../utils/parse-lyric';
 import { createAcion } from '../../../store/create-actions';
 
 
@@ -12,19 +13,18 @@ const changePlayList = (newPlayList) => createAcion(actionTypes.CHANGE_PLAY_LIST
 
 export const getSongDeatilAction = (ids) => async(dispatch, getState) => {
         const playList = getState().getIn(["player", "playList"]);
-        // console.log("play-list", playList);
         const songIndex = playList.findIndex(song => song.id === ids);
-
+        let song = null;
         if (songIndex !== -1) {
         //song exist in the playList:
-            const currentSong = playList[songIndex];
+            song = playList[songIndex];
             dispatch(changeCurrentSongIndex(songIndex)); 
-            dispatch(changeCurrentSong(currentSong));
+            dispatch(changeCurrentSong(song));
         } else {
         //song not in the playList:
             //1. get song details:
             const response = await getSongDetail(ids);
-            const song = response.data && response.data.songs[0]
+            song = response.data && response.data.songs[0]
             if (!song) return;
             // console.log("song detail", song);
             //2. add song to the playList and update in the redux:
@@ -36,7 +36,9 @@ export const getSongDeatilAction = (ids) => async(dispatch, getState) => {
             dispatch(changeCurrentSongIndex(newPlayList.length - 1));
             //4. change currentSong:
             dispatch(changeCurrentSong(song));
-        }
+        };
+        if(!song) return;
+        dispatch(getLyricAction(song.id));
 };
 
 // Change play sequence:
@@ -65,7 +67,22 @@ export const changeMusicAction = (tag) => {
                     // console.log("change music-currentSongIndex-2", currentSongIndex);
             };
             // console.log("change music-currentSongIndex", currentSongIndex);
+            const currentSong = playList[currentSongIndex];
             dispatch(changeCurrentSongIndex(currentSongIndex));
-            dispatch(changeCurrentSong(playList[currentSongIndex]));
+            dispatch(changeCurrentSong(currentSong));
+            dispatch(getLyricAction(currentSong.id));
     };
+};
+
+//get lyrics:
+const changeLyrics = (lyricList) => createAcion(actionTypes.CHANGE_LYRIC_LIST, lyricList);
+
+export const getLyricAction = (id) => async(dispatch) => {
+    const response = await getLyric(id);
+    // console.log("res",response);
+    const lyric = response.data.lrc.lyric;
+    // console.log("get lyric action", lyric);
+    const lyricList = parseLyric(lyric);
+    // console.log("lyricList", lyricList);
+    dispatch(changeLyrics(lyricList));
 };
