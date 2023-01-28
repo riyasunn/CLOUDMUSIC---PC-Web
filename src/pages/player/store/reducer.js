@@ -7,6 +7,7 @@ const defaultState = Map({
     currentSongIndex: 0,
     sequence: 0, //0 loop; 1 random; 2 single
     lyricList: [],
+    currentLyricIndex: 0,
 });
 
 const reducer = (state = defaultState, action) => {
@@ -22,6 +23,8 @@ const reducer = (state = defaultState, action) => {
             return state.set("sequence", payload);
         case actionTypes.CHANGE_LYRIC_LIST:
             return state.set("lyricList", payload);
+        case actionTypes.CHANGE_CURRENT_LYRIC_INDEX:
+            return state.set("currentLyricIndex", payload);
         default:
             return state;
     };

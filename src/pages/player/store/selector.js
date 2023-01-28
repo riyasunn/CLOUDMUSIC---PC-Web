@@ -22,3 +22,8 @@ export const selectLyricList = createSelector(
     [selectPlayerReducer],
     (player) => player.get("lyricList")
 );
+
+export const selectCurrentLyricIndex = createSelector(
+    [selectPlayerReducer],
+    (player) => player.get("currentLyricIndex")
+);

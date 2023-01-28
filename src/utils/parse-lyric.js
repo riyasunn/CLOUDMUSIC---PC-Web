@@ -3,7 +3,7 @@ const parseExp = /\[(\d{2}):(\d{2}).(\d{2,3})\]/;
 
 export const parseLyric = (lyricString) => {
     const lineStrings = lyricString.split("\n");
-    console.log(lineStrings); //['time content', 'time2 content2', ...]
+    // console.log(lineStrings); //['time content', 'time2 content2', ...]
     const lyrics = [];
 
     for (let line of lineStrings) {

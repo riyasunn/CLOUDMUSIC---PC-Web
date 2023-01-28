@@ -86,3 +86,5 @@ export const getLyricAction = (id) => async(dispatch) => {
     // console.log("lyricList", lyricList);
     dispatch(changeLyrics(lyricList));
 };
+
+export const changeCurrentLyricIndexAction = (index) => createAcion(actionTypes.CHANGE_CURRENT_LYRIC_INDEX, index);
