@@ -23,6 +23,7 @@ import {
   selectLyricList,
   selectCurrentLyricIndex,
 } from "../store/selector";
+import PlayerPanel from "../player-panel";
 // import { getSongDetail } from '../../../services/player';
 
 const PlayerBar = memo(() => {
@@ -211,6 +212,7 @@ const PlayerBar = memo(() => {
         onTimeUpdate={(e) => timeUpdate(e)}
         onEnded={(e) => handleMusicEnded()}
       />
+      <PlayerPanel/>
     </PlayerBarWrapper>
   );
 });
