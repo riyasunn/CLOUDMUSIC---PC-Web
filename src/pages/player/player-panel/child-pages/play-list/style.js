@@ -1,14 +1,10 @@
 import styled from "styled-components";
 
 export const PlayListWrapper = styled.div`
-    /* display: flex; */
-    position: absolute;
-    top:10px;
-    /* position: absolute; */
+    flex-grow: 1;
+    position: relative;
+    top:-95px;
     width: 553px;
-    /* left: 300px; */
-    /* border: 10px solid #d3d3d3;
-    border-width: 0 1px; */
 
     .play-item {
         display: flex;
