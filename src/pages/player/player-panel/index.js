@@ -10,7 +10,7 @@ const PlayerPanel = memo(() => {
         <PlayerPanelWrapper className='wrap-v2'>
             <PlayHeader/>
             <div className='content'>
-                <img src='' alt=''></img>
+                
                 <PlayList/>
                 <PlayLyric/>
             </div>
@@ -19,3 +19,4 @@ const PlayerPanel = memo(() => {
 });
 
 export default PlayerPanel;
+// <i className='sprite_playlist icon'></i>
