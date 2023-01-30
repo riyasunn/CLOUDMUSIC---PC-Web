@@ -95,7 +95,7 @@ const PlayerBar = memo(() => {
 
     if (currentLyricIndex !== i-1) {
         dispatch(changeCurrentLyricIndexAction(i-1));
-        console.log("lyric", lyricList[i-1]);
+        // console.log("lyric", lyricList[i-1]);
     }
     
   };

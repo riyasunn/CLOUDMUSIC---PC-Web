@@ -13,6 +13,11 @@ export const selectPlayList = createSelector(
     (player) => player.get("playList")
 );
 
+export const selectCurrentSongIndex = createSelector(
+    [selectPlayerReducer],
+    (player) => player.get("currentSongIndex")
+);
+
 export const selectSequence = createSelector(
     [selectPlayerReducer],
     (player) => player.get("sequence")

@@ -10,7 +10,6 @@ const PlayerPanel = memo(() => {
         <PlayerPanelWrapper className='wrap-v2'>
             <PlayHeader/>
             <div className='content'>
-                
                 <PlayList/>
                 <PlayLyric/>
             </div>

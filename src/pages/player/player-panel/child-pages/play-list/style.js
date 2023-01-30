@@ -18,6 +18,10 @@ export const PlayListWrapper = styled.div`
         left: 2px;
         height: 28px;
         line-height: 28px;
+        &:hover {
+            color: #fff;
+            background-color: #000;
+        }
 
         &.active {
             color: #fff;

@@ -2,11 +2,12 @@ import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
 
 import { HeaderWrapper, HeaderLeft, HeaderRight} from './style';
-import { selectPlayList } from '../../../store/selector';
+import { selectPlayList, selectCurrentSong } from '../../../store/selector';
 
 const PlayHeader = memo(() => {
 
     const playList = useSelector(selectPlayList);
+    const currentSong = useSelector(selectCurrentSong);
 
     return (
         <HeaderWrapper>
@@ -18,7 +19,7 @@ const PlayHeader = memo(() => {
                 </div>
             </HeaderLeft>
             <HeaderRight>
-                <h2>song name</h2>
+                <h2>{currentSong.name}</h2>
                 <div className='operator'>
                     <i className='sprite_playlist close'></i>
                 </div>

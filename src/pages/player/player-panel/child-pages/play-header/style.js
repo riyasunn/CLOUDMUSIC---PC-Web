@@ -55,6 +55,7 @@ export const HeaderRight = styled.div`
     h2 {
         width:400px;
         position: relative;
+        font-size: 15px;
     }
 
     .operator {

@@ -1,10 +1,11 @@
 import React, { memo } from 'react';
+import { LyricWrapper } from './style';
 
 const PlayLyric = memo(() => {
     return (
-        <div>
+        <LyricWrapper>
            <h2>lyric</h2> 
-        </div>
+        </LyricWrapper>
     );
 });
 
