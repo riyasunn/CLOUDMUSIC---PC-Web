@@ -3,9 +3,17 @@ import styled from "styled-components";
 export const PlayListWrapper = styled.div`
     flex-grow: 1;
     position: relative;
-    top:-95px;
     width: 553px;
-
+    height: 260px;
+    overflow: hidden;
+    overflow-y: scroll;
+    ::-webkit-scrollbar {
+        color: black;
+        width: 3px;
+    };
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
     .play-item {
         display: flex;
         padding: 0 8px 0 25px;
