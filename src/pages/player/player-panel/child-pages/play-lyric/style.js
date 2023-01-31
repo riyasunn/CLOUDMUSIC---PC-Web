@@ -8,7 +8,7 @@ export const LyricWrapper = styled.div`
     overflow-y: scroll;
     ::-webkit-scrollbar {
         color: black;
-        width: 10px;
+        width: 5px;
     };
     ::-webkit-scrollbar-thumb {
         background: #888; 
@@ -17,7 +17,7 @@ export const LyricWrapper = styled.div`
     
     .lyric-content {
         /* text-align: center; */
-        /* margin-top: 10px; */
+        margin-top: 10px;
         .lyc-line {
             /* margin: 30px 0 30px 0; */
             font-size:13px;

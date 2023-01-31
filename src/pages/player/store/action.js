@@ -88,3 +88,5 @@ export const getLyricAction = (id) => async(dispatch) => {
 };
 
 export const changeCurrentLyricIndexAction = (index) => createAcion(actionTypes.CHANGE_CURRENT_LYRIC_INDEX, index);
+
+export const changeIsPlayPanelOpenAction = (Boolean) => createAcion(actionTypes.CHANGE_IS_PLAY_PANEL_OPEN, Boolean);

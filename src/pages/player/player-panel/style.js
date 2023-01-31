@@ -15,7 +15,4 @@ export const PlayerPanelWrapper = styled.div`
         height: 260px;
         background: url(${require("../../../assets/img/playlist_bg.png")}) -1014px 0 repeat-y;
     }
-   
-   
-   
 `

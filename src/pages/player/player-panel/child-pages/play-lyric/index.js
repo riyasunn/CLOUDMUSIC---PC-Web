@@ -24,7 +24,7 @@ const PlayLyric = memo(() => {
         // console.log("to",to);
         // console.log("differenct",difference);
         var perTick = difference / duration * 10 ;
-        console.log("perTick",perTick);
+        // console.log("perTick",perTick);
         setTimeout(function() {
             element.scrollTop = element.scrollTop + perTick;
             // console.log("scrollTop-2",element.scrollTop);

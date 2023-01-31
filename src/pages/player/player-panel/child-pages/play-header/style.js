@@ -50,28 +50,12 @@ export const HeaderRight = styled.div`
     flex: 1;
     text-align: center;
     color: #fff;
-    font-size: 14px;
 
     h2 {
-        margin-left: 15px;
-        width:400px;
+        width:420px;
         position: relative;
         font-size: 15px;
+        margin-left: 10px;
     }
 
-    .operator {
-        .close {
-            width: 16px;
-            height: 16px;
-            display: inline-block;
-            background-position: -200px 0;
-            position: absolute;
-            top: 7px;
-            right: 15px;
-            cursor: pointer;
-
-        }
-    }
-
-  
 `;

@@ -15,6 +15,7 @@ import {
   changeSequenceAction,
   changeMusicAction,
   changeCurrentLyricIndexAction,
+  changeIsPlayPanelOpenAction,
 } from "../store/action";
 import {
   selectCurrentSong,
@@ -22,9 +23,9 @@ import {
   selectSequence,
   selectLyricList,
   selectCurrentLyricIndex,
+  selectIsPlayPanelOpen
 } from "../store/selector";
 import PlayerPanel from "../player-panel";
-// import { getSongDetail } from '../../../services/player';
 
 const PlayerBar = memo(() => {
   //props and state:
@@ -43,6 +44,9 @@ const PlayerBar = memo(() => {
   const lyricList = useSelector(selectLyricList);
   // console.log("lyricList", lyricList);
   const currentLyricIndex = useSelector(selectCurrentLyricIndex);
+  const isPlayPanelOpen = useSelector(selectIsPlayPanelOpen);
+  console.log("play-bar", isPlayPanelOpen);
+
   //other hooks:
   const audioRef = useRef();
 
@@ -92,12 +96,10 @@ const PlayerBar = memo(() => {
       };
     }
     // console.log("currentLyric: ", lyricList[i - 1]);
-
     if (currentLyricIndex !== i-1) {
         dispatch(changeCurrentLyricIndexAction(i-1));
         // console.log("lyric", lyricList[i-1]);
     }
-    
   };
 
   const changeSequence = () => {
@@ -139,7 +141,6 @@ const PlayerBar = memo(() => {
       setCurrentTime(currentTimeAfterChange * 1000);
       // console.log("after change display current-time", currentTime);
       setIsChanging(false);
-
       if (!isPlaying) {
         playMusic();
       }
@@ -147,74 +148,80 @@ const PlayerBar = memo(() => {
     [duration, isPlaying, playMusic]
   );
 
+    const togglePlayerPanel = () => {
+      dispatch(changeIsPlayPanelOpenAction(!isPlayPanelOpen));
+    }
+
   return (
-    <PlayerBarWrapper className="sprite_player">
-      <div className="content wrap-v2">
-        <Control isPlaying={isPlaying}>
-          <button
-            className="sprite_player prev "
-            onClick={(e) => dispatch(changeMusicAction(-1))}
-          ></button>
-          <button className="sprite_player play " onClick={playMusic}></button>
-          <button
-            className="sprite_player next "
-            onClick={(e) => dispatch(changeMusicAction(1))}
-          ></button>
-        </Control>
-        <PlayInfo>
-          <div className="image">
-            <NavLink to="/discover/player">
-              <img src={setImageSize(songPic, 34)} alt="" />
-              <div className="sprite_player cover"></div>
-            </NavLink>
-          </div>
-          <div className="info">
-            <div className="song">
-              <a href="/待更新" className="song-name">
-                {currentSong.name}
-              </a>
-              <a href="/待更新" className="artiest-name">
-                {singerName}
-              </a>
+      <PlayerBarWrapper className="sprite_player">
+        <div className="content wrap-v2">
+          <Control isPlaying={isPlaying}>
+            <button
+              className="sprite_player prev "
+              onClick={(e) => dispatch(changeMusicAction(-1))}
+            ></button>
+            <button className="sprite_player play " onClick={playMusic}></button>
+            <button
+              className="sprite_player next "
+              onClick={(e) => dispatch(changeMusicAction(1))}
+            ></button>
+          </Control>
+          <PlayInfo>
+            <div className="image">
+              <NavLink to="/discover/player">
+                <img src={setImageSize(songPic, 34)} alt="" />
+                <div className="sprite_player cover"></div>
+              </NavLink>
             </div>
-            <div className="progress">
-              <Slider
-                value={progress}
-                onChange={sliderChange}
-                onAfterChange={sliderAfterChange}
-              />
-              <div className="time">
-                <span className="now-time">{showCurrentTime}</span>
-                <span className="divider">/</span>
-                <span className="duration">{showDuration}</span>
+            <div className="info">
+              <div className="song">
+                <a href="/待更新" className="song-name">
+                  {currentSong.name}
+                </a>
+                <a href="/待更新" className="artiest-name">
+                  {singerName}
+                </a>
+              </div>
+              <div className="progress">
+                <Slider
+                  value={progress}
+                  onChange={sliderChange}
+                  onAfterChange={sliderAfterChange}
+                />
+                <div className="time">
+                  <span className="now-time">{showCurrentTime}</span>
+                  <span className="divider">/</span>
+                  <span className="duration">{showDuration}</span>
+                </div>
               </div>
             </div>
-          </div>
-        </PlayInfo>
-        <Operator sequence={sequence}>
-          <div className="left">
-            <button className="sprite_player btn favor"></button>
-            <button className="sprite_player btn share"></button>
-          </div>
-          <div className="right sprite_player">
-            <button className="sprite_player btn volume"></button>
-            <button
-              className="sprite_player btn loop"
-              onClick={(e) => changeSequence()}
-            ></button>
-            <button className="sprite_player btn play-list"></button>
-            <p className="count">{playList.length}</p>
-          </div>
-        </Operator>
-      </div>
-      <audio
-        ref={audioRef}
-        onTimeUpdate={(e) => timeUpdate(e)}
-        onEnded={(e) => handleMusicEnded()}
-      />
-      <PlayerPanel/>
-    </PlayerBarWrapper>
+          </PlayInfo>
+          <Operator sequence={sequence}>
+            <div className="left">
+              <button className="sprite_player btn favor"></button>
+              <button className="sprite_player btn share"></button>
+            </div>
+            <div className="right sprite_player">
+              <button className="sprite_player btn volume"></button>
+              <button
+                className="sprite_player btn loop"
+                onClick={(e) => changeSequence()}>
+              </button>
+              <button className="sprite_player btn play-list" onClick={togglePlayerPanel}></button>
+              <p className="count">{playList.length}</p>
+            </div>
+          </Operator>
+        </div>
+        <audio
+          ref={audioRef}
+          onTimeUpdate={(e) => timeUpdate(e)}
+          onEnded={(e) => handleMusicEnded()}
+        />
+        {isPlayPanelOpen && <PlayerPanel/>};
+      </PlayerBarWrapper>
   );
 });
 
 export default PlayerBar;
+
+

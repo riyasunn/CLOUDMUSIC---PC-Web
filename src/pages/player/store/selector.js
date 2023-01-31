@@ -32,3 +32,8 @@ export const selectCurrentLyricIndex = createSelector(
     [selectPlayerReducer],
     (player) => player.get("currentLyricIndex")
 );
+
+export const selectIsPlayPanelOpen = createSelector(
+    [selectPlayerReducer],
+    (player) => player.get("isPlayPanelOpen"),
+);

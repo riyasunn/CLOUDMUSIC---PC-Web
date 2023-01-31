@@ -20,9 +20,6 @@ const PlayHeader = memo(() => {
             </HeaderLeft>
             <HeaderRight>
                 <h2>{currentSong.name}</h2>
-                <div className='operator'>
-                    <i className='sprite_playlist close'></i>
-                </div>
             </HeaderRight>
         </HeaderWrapper>
     );

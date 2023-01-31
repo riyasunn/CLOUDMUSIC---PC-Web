@@ -8,6 +8,7 @@ const defaultState = Map({
     sequence: 0, //0 loop; 1 random; 2 single
     lyricList: [],
     currentLyricIndex: 0,
+    isPlayPanelOpen: true,
 });
 
 const reducer = (state = defaultState, action) => {
@@ -25,6 +26,8 @@ const reducer = (state = defaultState, action) => {
             return state.set("lyricList", payload);
         case actionTypes.CHANGE_CURRENT_LYRIC_INDEX:
             return state.set("currentLyricIndex", payload);
+        case actionTypes.CHANGE_IS_PLAY_PANEL_OPEN:
+            return state.set("isPlayPanelOpen", payload);
         default:
             return state;
     };

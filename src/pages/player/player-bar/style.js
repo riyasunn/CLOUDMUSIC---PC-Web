@@ -115,13 +115,6 @@ export const PlayInfo = styled.div`
                 background-position: left -66px;
             }
 
-            /* .ant-slider-handle {
-                width: 22px;
-                height: 24px;
-                background: url(${require('../../../assets/img/sprite_icon.png')}) 0 -250px;
-                margin-top: -7px;
-                border: none;
-            } */
 
             .time {
                 .now-time {
@@ -162,6 +155,7 @@ export const Operator = styled.div`
         background-position: -147px -248px;
         
         .volume {
+            cursor: pointer;
             background-position: -2px -248px;
             opacity: .7;
             :hover {
@@ -171,8 +165,8 @@ export const Operator = styled.div`
         }
 
         .loop {
+            cursor: pointer;
             opacity: .7;
-            /* background-position: -66px -248px; */
             background-position: ${props => {
                 switch(props.sequence) {
                     case 1:
@@ -191,15 +185,12 @@ export const Operator = styled.div`
         }
 
         .play-list {
+            cursor: pointer;
             width: 59px;
             background-position: -42px -68px; 
             opacity: .7;
-          
-            /* color: #ccc; */
-            /* padding-left: 18px; */
             :hover {
                 filter: drop-shadow(0 0px 3px rgb(0 255 255));
-                /* box-shadow: 0 0 50px white; */
                 opacity: 1;
             }
         }
