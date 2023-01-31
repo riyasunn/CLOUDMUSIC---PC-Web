@@ -53,20 +53,21 @@ export const HeaderRight = styled.div`
     font-size: 14px;
 
     h2 {
+        margin-left: 15px;
         width:400px;
         position: relative;
         font-size: 15px;
     }
 
     .operator {
-        margin-right: 30px;
         .close {
             width: 16px;
             height: 16px;
             display: inline-block;
             background-position: -200px 0;
-            position: relative;
+            position: absolute;
             top: 7px;
+            right: 15px;
             cursor: pointer;
 
         }
