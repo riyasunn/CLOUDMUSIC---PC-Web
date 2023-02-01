@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const PlayListWrapper = styled.div`
     flex-grow: 1;
-    position: relative;
+    /* position: absolute; */
     /* top:0px; */
     width: 553px;
     height: 260px;
@@ -15,6 +15,13 @@ export const PlayListWrapper = styled.div`
     ::-webkit-scrollbar-thumb {
         background: #888;
     }
+
+    h2 {
+           text-align: center;
+           margin-top: 100px;
+           font-size: 20px;
+    };
+
     .play-item {
         display: flex;
         padding: 0 8px 0 25px;
@@ -41,7 +48,11 @@ export const PlayListWrapper = styled.div`
                 position: absolute;
                 left: 9px;
                 top: 9px;
-            }
+            };
+        }
+
+        .song-name {
+            cursor: pointer;
         }
         
         .song-info {

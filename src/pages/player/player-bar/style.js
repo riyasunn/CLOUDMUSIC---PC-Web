@@ -59,7 +59,6 @@ export const PlayInfo = styled.div`
     align-items: center;
 
     .image {
-        /* margin-right: 10px; */
         border: 1 solid black;
         border-radius: 5px;
         position: relative;
@@ -75,7 +74,6 @@ export const PlayInfo = styled.div`
     }
 
     .info {
-        /* flex: 1; */
         color: #a1a1a1;
         margin-left: 10px;
 
@@ -131,23 +129,12 @@ export const PlayInfo = styled.div`
 
 export const Operator = styled.div`
     display: flex;
-    /* align-items: center; */
-    /* position: relative; */
-    /* top: 5px; */
     margin-top: 10px;
     
     .btn {
         width: 25px;
         height: 25px;
     }
-
-    /* .favor {
-        background-position: -88px -163px;
-    }
-
-    .share {
-        background-position: -114px -163px;
-    } */
 
     .volume {
             cursor: pointer;

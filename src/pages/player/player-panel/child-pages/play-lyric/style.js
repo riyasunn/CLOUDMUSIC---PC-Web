@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const LyricWrapper = styled.div`
     width: 420px;
     height: 260px; 
+    /* position: absolute;
+    top: 0px; */
     flex-grow: 1;
     overflow-y: hidden;
     overflow-y: scroll;

@@ -56,12 +56,12 @@ const PlayerBar = memo(() => {
 
   useEffect(() => {
     audioRef.current.src = getPlaySong(currentSong.id);
-    // audioRef.current.play().then(res => {
-    //     setIsPlaying(true);
-    // }).catch(err => {
-    //     setIsPlaying(false);
-    //     // alert("Sorry, no copyright in your region.")
-    // })
+    audioRef.current.play().then(res => {
+        setIsPlaying(true);
+    }).catch(err => {
+        setIsPlaying(false);
+        // alert("Sorry, no copyright in your region.")
+    })
   }, [currentSong]);
 
   //other handle:
