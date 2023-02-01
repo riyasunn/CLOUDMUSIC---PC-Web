@@ -141,31 +141,53 @@ export const Operator = styled.div`
         height: 25px;
     }
 
-    .favor {
+    /* .favor {
         background-position: -88px -163px;
     }
 
     .share {
         background-position: -114px -163px;
-    }
+    } */
 
-    .right {
-        width: 130px;
-        margin-left: 20px;
-        background-position: -147px -248px;
-        
-        .volume {
+    .volume {
             cursor: pointer;
             background-position: -2px -248px;
             opacity: .7;
             :hover {
                 opacity: 1;
                 filter: drop-shadow(0 0px 3px rgb(0 255 255));
-            }
-        }
+            };
+        };
+    .volume-bar {
+        position: absolute;
+        top: -115px;
+        height: 115px;
+        background-position: 0 -500px;
+        .ant-slider {
+                height:90px;
+                position: relative;
+                top: 15px;
+        };
+
+        .ant-slider-track {
+                width: 9px;
+                background: url(${require("../../../assets/img/playbar_sprite.png")}) no-repeat 0 9999px;
+                background-position: -40px -520px;
+        };
+        
+    }
+       
+
+    .right {
+        width: 130px;
+        margin-left: 10px;
+        background-position: -147px -248px;
+        
+        
 
         .loop {
             cursor: pointer;
+            margin-right: 10px;
             opacity: .7;
             background-position: ${props => {
                 switch(props.sequence) {
@@ -200,7 +222,7 @@ export const Operator = styled.div`
             color: #9b9b9b;
             position: absolute;
             top: 20px;
-            right: 25px;
+            right: 39px;
         }
     }
   

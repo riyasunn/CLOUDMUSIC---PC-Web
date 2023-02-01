@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const PlayListWrapper = styled.div`
     flex-grow: 1;
     position: relative;
+    /* top:0px; */
     width: 553px;
     height: 260px;
     overflow: hidden;

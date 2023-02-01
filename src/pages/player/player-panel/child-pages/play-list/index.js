@@ -11,7 +11,7 @@ const PlayList = memo(() => {
 
     const playList = useSelector(selectPlayList);
     const currentSongIndex = useSelector(selectCurrentSongIndex);
-    console.log("play-list currentSOngIndex", currentSongIndex);
+    // console.log("play-list currentSOngIndex", currentSongIndex);
     
     return (
         

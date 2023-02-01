@@ -33,7 +33,7 @@ const PlayerBar = memo(() => {
   const [progress, setProgress] = useState(0);
   const [isChanging, setIsChanging] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-
+  const [showVolume, setShowVolume] = useState(false);
   //redux hooks:
   const dispatch = useDispatch();
   const currentSong = useSelector(selectCurrentSong);
@@ -45,7 +45,6 @@ const PlayerBar = memo(() => {
   // console.log("lyricList", lyricList);
   const currentLyricIndex = useSelector(selectCurrentLyricIndex);
   const isPlayPanelOpen = useSelector(selectIsPlayPanelOpen);
-  console.log("play-bar", isPlayPanelOpen);
 
   //other hooks:
   const audioRef = useRef();
@@ -57,12 +56,12 @@ const PlayerBar = memo(() => {
 
   useEffect(() => {
     audioRef.current.src = getPlaySong(currentSong.id);
-    audioRef.current.play().then(res => {
-        setIsPlaying(true);
-    }).catch(err => {
-        setIsPlaying(false);
-        // alert("Sorry, no copyright in your region.")
-    })
+    // audioRef.current.play().then(res => {
+    //     setIsPlaying(true);
+    // }).catch(err => {
+    //     setIsPlaying(false);
+    //     // alert("Sorry, no copyright in your region.")
+    // })
   }, [currentSong]);
 
   //other handle:
@@ -150,6 +149,15 @@ const PlayerBar = memo(() => {
 
     const togglePlayerPanel = () => {
       dispatch(changeIsPlayPanelOpenAction(!isPlayPanelOpen));
+    };
+
+    const changeVolume = (value) => {
+      audioRef.current.volume = value / 100;
+      // console.log("audio-volume",audioRef.current.volume );
+    };
+
+    const toggleShowVolume = () => {
+      setShowVolume(!showVolume);
     }
 
   return (
@@ -187,6 +195,7 @@ const PlayerBar = memo(() => {
                   value={progress}
                   onChange={sliderChange}
                   onAfterChange={sliderAfterChange}
+                  tooltip ={{open: false}}
                 />
                 <div className="time">
                   <span className="now-time">{showCurrentTime}</span>
@@ -198,11 +207,14 @@ const PlayerBar = memo(() => {
           </PlayInfo>
           <Operator sequence={sequence}>
             <div className="left">
-              <button className="sprite_player btn favor"></button>
-              <button className="sprite_player btn share"></button>
+              <button className="sprite_player btn volume" onClick={toggleShowVolume}></button>
+              <div className="volume-bar sprite_player">
+                {
+                  showVolume && <Slider vertical defaultValue={30} onChange={changeVolume}/>
+                }
+              </div>
             </div>
             <div className="right sprite_player">
-              <button className="sprite_player btn volume"></button>
               <button
                 className="sprite_player btn loop"
                 onClick={(e) => changeSequence()}>
@@ -223,5 +235,6 @@ const PlayerBar = memo(() => {
 });
 
 export default PlayerBar;
+
 
 
