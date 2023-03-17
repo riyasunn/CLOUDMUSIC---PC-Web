@@ -3,12 +3,14 @@ import { PLAYER_ACTION_TYPE as actionTypes} from './type';
 
 const defaultState = Map({
     currentSong: {},
-    playList: [],
+    playList: [
+        
+    ],
     currentSongIndex: 0,
     sequence: 0, //0 loop; 1 random; 2 single
     lyricList: [],
     currentLyricIndex: 0,
-    isPlayPanelOpen: false,
+    isPlayPanelOpen: true,
 });
 
 const reducer = (state = defaultState, action) => {

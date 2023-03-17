@@ -30,7 +30,7 @@ export const getSongDeatilAction = (ids) => async(dispatch, getState) => {
             //2. add song to the playList and update in the redux:
             const newPlayList = [...playList];
             newPlayList.push(song);
-            // console.log("newPlayList", newPlayList)
+            console.log("newPlayList", newPlayList)
             dispatch(changePlayList(newPlayList));
             //3. change currentSongIndex:
             dispatch(changeCurrentSongIndex(newPlayList.length - 1));

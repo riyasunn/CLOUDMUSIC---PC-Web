@@ -35,11 +35,15 @@ export const HeaderLeft = styled.div`
             span {
                 color: #ccc;
                 cursor: pointer;
+                
                 :hover {
-                    text-decoration: underline;
+                    /* text-decoration: underline; */
                     color: white;
                 };
             };
+            .close {
+                margin-left: 20px;
+            }
     };
 
 `;

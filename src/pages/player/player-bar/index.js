@@ -50,8 +50,8 @@ const PlayerBar = memo(() => {
   const audioRef = useRef();
 
   useEffect(() => {
-    // getSongDetail(247579).then(res => console.log("get song info", res) )
-    dispatch(getSongDeatilAction(1355394805));
+    // getSongDetail(247579).then(res => console.log("get song info", res) ) 1355394805 1932344184 2028923192
+    dispatch(getSongDeatilAction(2028923192));
   }, [dispatch]);
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const PlayerBar = memo(() => {
         setIsPlaying(true);
     }).catch(err => {
         setIsPlaying(false);
-        // alert("Sorry, no copyright in your region.")
+        // alert("Sorry, no copyright in your region.");
     })
   }, [currentSong]);
 

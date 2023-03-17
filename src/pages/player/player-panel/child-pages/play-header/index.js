@@ -2,17 +2,21 @@ import React, { memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { HeaderWrapper, HeaderLeft, HeaderRight} from './style';
-import { selectPlayList, selectCurrentSong } from '../../../store/selector';
-import { deletePlayListAction } from '../../../store/action';
+import { selectPlayList, selectCurrentSong, selectIsPlayPanelOpen } from '../../../store/selector';
+import { deletePlayListAction, changeIsPlayPanelOpenAction } from '../../../store/action';
 
 const PlayHeader = memo(() => {
     const dispatch = useDispatch();
 
     const playList = useSelector(selectPlayList);
     const currentSong = useSelector(selectCurrentSong);
+    const isPlayPanelOpen = useSelector(selectIsPlayPanelOpen);
 
     const deleteAll = () => {
         dispatch(deletePlayListAction([]));
+    };
+    const closePanel = () => {
+        dispatch(changeIsPlayPanelOpenAction(!isPlayPanelOpen))
     }
 
     return (
@@ -22,6 +26,7 @@ const PlayHeader = memo(() => {
                 <div className='operator'>
                     <i className='sprite_playlist del'></i>
                     <span onClick={deleteAll}>Delete all</span>
+                    <span className='close' onClick={closePanel}> X Close</span>
                 </div>
             </HeaderLeft>
             <HeaderRight>
