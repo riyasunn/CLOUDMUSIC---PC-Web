@@ -32,3 +32,8 @@ export const selectOriginalRanking = createSelector(
     [selectRecommendReducer],
     (recommend) => recommend.get("originalRanking"),
 );
+
+export const selectSettleSingers = createSelector(
+    [selectRecommendReducer],
+    (recommend) => recommend.get("settleSingsers"),   
+);

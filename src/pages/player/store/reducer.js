@@ -8,7 +8,7 @@ const defaultState = Map({
     sequence: 0, //0 loop; 1 random; 2 single
     lyricList: [],
     currentLyricIndex: 0,
-    isPlayPanelOpen: true,
+    isPlayPanelOpen: false,
 });
 
 const reducer = (state = defaultState, action) => {

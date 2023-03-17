@@ -40,3 +40,13 @@ export const getRankingList = (id) => {
         }
     });
 };
+
+export const getArtistList = (limit, cat) => {
+    return request({
+        url: '/artist/list',
+        params: {
+            cat,
+            limit
+        }
+    })
+};
