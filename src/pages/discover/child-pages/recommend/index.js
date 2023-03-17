@@ -6,9 +6,9 @@ import TopBanner from './child-components/top-banner/index';
 import HotRecommend from './child-components/hot-recommend';
 import NewAlbum from './child-components/new-album';
 import Ranking from './child-components/ranking';
-import UserLogin from './child-components/user-login/style';
+// import UserLogin from './child-components/user-login/style';
 import SettledSinger from './child-components/settled-singer';
-import HotAnchor from './child-components/hot-anchor';
+// import HotAnchor from './child-components/hot-anchor';
 
 
 const Recommend = () => {
@@ -25,9 +25,9 @@ const Recommend = () => {
                     <Ranking />
                 </RecommendLeft>
                 <RecommendRight>
-                    <UserLogin />
+                    {/*<UserLogin />*/}
                     <SettledSinger />
-                    <HotAnchor />
+                    {/*<HotAnchor />*/}
                 </RecommendRight>
             </Content>
         </RecommendWrapper>
